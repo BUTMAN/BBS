@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+    节点管理界面
+{% endblock %}
+
+{% block content %}
+    <div>
+        <form action="{{ url_for('.add') }}" method="post">
+            <input type="text" name="name" placeholder="输入 name">
+            <input type="text" name="description" placeholder="输入 description">
+            <button>Add</button>
+        </form>
+    </div>
+
+    {% for node in node_list %}
+    <div>
+        {{ node.id }} :
+        <a href="{{ url_for('node.show', id=node.id) }}">
+            {{ node.name }}
+        </a>
+        <div class="admin-edit">
+            <a href={{ url_for('.edit', id=node.id) }}>eidt</a>
+            <a href={{ url_for('.delete', id=node.id) }}>delete</a>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+

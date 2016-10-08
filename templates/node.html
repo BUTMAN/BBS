@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ node.name }} 区
+{% endblock %}
+
+{% block content %}
+    <h3>{{ node.name }} 区</h3>
+    {% for t in node.topics %}
+    <div class="bbs-topic-comments">
+        <a href="{{ url_for('topic.show', id=t.id) }}">
+            {{ t.title }}
+        </a>
+    </div>
+    {% endfor %}
+{% endblock %}
+
+{% block sidebar %}
+<div class="bbs-sidebar bbs-box gua-2">
+    <div class="sidebar-avatar">
+        <a href="{{ url_for('topic.new', id=node.id) }}">发布新帖子</a>
+        <div>
+                hello, {{ user.username }}
+        </div>
+        <img src="{{ user.avatar }}" class="avatar">
+    </div>
+</div>
+{% endblock %}

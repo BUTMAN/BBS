@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ topic.title }}
+{% endblock %}
+
+{% block content %}
+    <div class="">
+        <a href="{{url_for('node.show', id=topic.node.id)}}">{{ topic.node.name }}</a>
+    </div>
+    <div class="bbs-topic-main">
+        <h3>{{ topic.title }}</h3>
+        <div> by {{ topic.user.username }}</div>
+        <div> by {{ topic.created_time }}</div>
+        <pre>{{ topic.content}}</pre>
+    </div>
+
+    <div>
+        <form class="pure-form" action="{{ url_for('comment.add') }}" method="post">
+            <input type="hidden" name="topic_id" value="{{ topic.id }}">
+            <input name="content" class="pure-input-rounded" style="height: 50px; width: 500px; border-radius: 5px;">
+            <button class="pure-button" style="width: 500px; font-size: 20px; padding: 0;">发表回复</button>
+        </form>
+    </div>
+
+    <div class="bbs-comments">
+        {% for c in topic.comments %}
+        <div class="bbs-topic-comments">
+            <pre>{{ c.content }}</pre>
+            {{ c.created_time }}
+            <br>
+            <img src="{{ user.avatar }}" class="avatar-s">
+            {{ c.user.username }}
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+
+{% block sidebar %}
+<div class="bbs-sidebar bbs-box gua-2">
+    <div class="">
+        <a href="{{ url_for('topic.new', id=topic.node.id) }}">发布新帖子</a>
+        <div>
+                hello, {{ user.username }}
+        </div>
+        <img src="{{ user.avatar }}" class="avatar">
+    </div>
+    </div>
+</div>
+{% endblock %}

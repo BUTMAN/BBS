@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+    个人资料
+{% endblock %}
+
+{% block content %}
+
+    <div class="qmpl-profile" style="min-width: 650px">
+        <div class="background">
+            <div style="margin-bottom: 2px;">
+                用户名： {{ user.username }}
+            </div>
+            <div>
+                <form action="/auth/update_password" method="post">
+                    密码：
+                    <input class="profile-uuru" name="password" value="{{ user.password }}">
+                    <button class="button-profile">修改密码</button>
+                </form>
+            </div>
+            <div>
+                <form action="/auth/update_avatar" method="post">
+                    头像：
+                    <input class="profile-uuru" name="avatar" value="{{ user.avatar }}" style="width:400px;">
+                    <button class="button-profile">修改头像</button>
+                </form>
+            </div>
+            <div class="description" style="margin-bottom: 5px;">
+                没做图片上传，这里只能填外链url，将就一下（
+            </div>
+            <div>
+                头像预览：
+                <div style="margin-top: 5px;">
+                    大<img src="{{ user.avatar }}" class="avatar-l">
+                    中<img src="{{ user.avatar }}" class="avatar">
+                    小<img src="{{ user.avatar }}" class="avatar-s">
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

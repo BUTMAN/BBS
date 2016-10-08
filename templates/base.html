@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pure-min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bbs.css') }}">
+    {% block css %}{% endblock %}
+
+    <script src="/static/js/jquery-3.0.0.min.js"></script>
+    {% block script %}{% endblock %}
+</head>
+<body>
+    <div class="bbs-top">
+        <img class="bbs-logo" src="http://i1.piimg.com/4851/df24b21ce2a41ff5.png">
+        <nav class="bbs-menu">
+            <a class="gua-nav-link" href="/node">首页</a>
+            <a class="gua-nav-link" href="/profile">个人</a>
+            <a class="gua-nav-link" href="/logout">注销</a>
+            <!--<div class="gua-dropdown">-->
+                <!--<a class="" href="#">下拉菜单</a>-->
+                <!--<div class="gua-dropdown-content">-->
+                    <!--<a class="" href="#">博客</a>-->
+                    <!--<a class="" href="#">宝库</a>-->
+                    <!--<a class="" href="#">关于</a>-->
+                <!--</div>-->
+            <!--</div>-->
+        </nav>
+    </div>
+    <div class="bbs-main gua-flex">
+        <div class="bbs-content bbs-box gua-6">
+            {% block content %}
+            {% endblock %}
+        </div>
+
+            {% block sidebar %}
+            {% endblock %}
+    </div>
+
+    <div class="bbs-bottom">
+        <div class="bbs-bottom-content bbs-content-size">
+            <div class="bbs-bottom-nav">
+                <a href="#">关于</a>
+                <span>&nbsp;·&nbsp;</span>
+                <a href="#">FAQ</a>
+                <span>&nbsp;·&nbsp;</span>
+                <a href="#">鸣谢</a>
+                <span>&nbsp;·&nbsp;</span>
+                <a href="#">7人在线</a>
+            </div>
+            <div class="bbs-bottom-about">
+                创意工作者们的社区<br>World is powered by solitude
+            </div>
+        </div>
+    </div>
+</body>
+</html>

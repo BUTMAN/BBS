@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>node edit</title>
+</head>
+<body>
+    <div>
+        <form action="{{ url_for('.update', id=node.id) }}" method="post">
+            <input type="text" name="name" placeholder="输入 name">
+            <input type="text" name="description" placeholder="输入 description">
+            <button>更新</button>
+        </form>
+    </div>
+</body>
+</html>

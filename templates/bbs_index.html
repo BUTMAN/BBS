@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+    首页
+{% endblock %}
+
+{% block content %}
+    {% for node in node_list %}
+    <div class="bbs-topic-comments">
+        {{ node.id }} :
+        <a href="{{ url_for('node.show', id=node.id) }}">
+            {{ node.name }}
+        </a>
+    </div>
+    {% endfor %}
+{% endblock %}
+
+
+{% block sidebar %}
+    <div class="bbs-sidebar bbs-box gua-2">
+        <div class="">
+            哈喽, {{ user.username }}
+        </div>
+        <form class="pure-form">
+            <input type="text" class="pure-input-rounded" style="height: 10px; width: 200px;">
+            <button type="submit" class="pure-button" style="width: 200px; font-size: 20px; padding: 0;">Search</button>
+        </form>
+        <div class="">
+            <a href="#">今日新闻</a>
+        </div>
+    </div>
+{% endblock %}

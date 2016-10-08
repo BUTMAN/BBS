@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bbs.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pure-min.css') }}">
+    <script src="/static/js/jquery-3.0.0.min.js"></script>
+    <title>auth</title>
+    <style>
+        body {
+            background-image: url(/static/img/auth-bg1.jpg);
+            background-repeat: repeat-y;
+        }
+    </style>
+</head>
+<body>
+    <div class="bbs-top">
+        <img class="bbs-logo" src="http://i1.piimg.com/4851/df24b21ce2a41ff5.png">
+        <nav class="bbs-menu">
+            <a class="gua-nav-link gua-active" href="/node">首页</a>
+            <a class="gua-nav-link" href="/profile">个人</a>
+        </nav>
+    </div>
+    <div class="auth-position">
+        <div class="auth-main">
+            <form action="{{ url_for('.login') }}" method="post" class="pure-form">
+                <input type="text" name="username" placeholder="输入 name" style="padding: 2px;">
+                <input type="password" name="password" placeholder="输入 password" style="padding: 2px;">
+                <button class="pure-button pure-button-primary" style="padding: 2px;">登录</button>
+            </form>
+        </div>
+
+        <div class="auth-main">
+            <form action="{{ url_for('.register') }}" method="post" class="pure-form">
+                <input type="text" name="username" placeholder="用户名需大等于 6 个字符" style="padding: 2px;">
+                <input type="text" name="password" placeholder="密码需大等于 6 个字符" style="padding: 2px;">
+                <button class="pure-button pure-button-primary" style="padding: 2px;">注册</button>
+            </form>
+            <div style="background-color: lightgray; margin: 5px auto 0;">
+                {% for a in msgs %}
+                    {{ a }},
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

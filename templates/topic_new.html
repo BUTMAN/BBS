@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+    发帖
+{% endblock %}
+
+{% block content %}
+    <form class="pure-form" action="{{ url_for('.add') }}" method="post">
+        <input type="hidden" name="node_id" value="{{ node_id }}">
+        <br>
+        <input type="text" name="title" placeholder="请输入 title" class="pure-input-rounded" style="height: 10px; width: 500px; border-radius: 5px; margin-bottom: 10px;">
+        <br>
+        <input name="content" placeholder="q请输入 content" class="pure-input-rounded" style="height: 50px; width: 500px; border-radius: 5px; margin-bottom: 10px;">
+        <br>
+        <button class="pure-button" style="width: 500px; font-size: 20px; padding: 0;">Add</button>
+    </form>
+{% endblock %}
+
+
+{% block sidebar %}
+<div class="bbs-sidebar bbs-box gua-2">
+    <div class="">
+        <div>
+                hello, {{ user.username }}
+        </div>
+        想说点什么?
+    </div>
+</div>
+{% endblock %}
