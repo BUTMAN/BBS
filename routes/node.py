@@ -51,7 +51,7 @@ def show(id):
 
 # 以下路由需要管理员权限操作
 @main.route('/admin')
-# @admin_required
+@admin_required
 def admin():
     ms = Model.query.all()
     return render_template('node_index.html', node_list=ms)
